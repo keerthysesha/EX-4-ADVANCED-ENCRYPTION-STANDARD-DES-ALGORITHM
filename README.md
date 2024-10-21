@@ -13,33 +13,31 @@
 ```
 #include <stdio.h>
 #include <string.h>
-
-void xor_encrypt_decrypt(char *input, char *output, char key) {
-    for (int i = 0; i < strlen(input); i++) {
-        output[i] = input[i] ^ key;  // XOR each byte with the key
-    }
-    output[strlen(input)] = '\0'; // Null-terminate the result
+// XOR encryption function
+void xor_encrypt_decrypt(char *input, char *key) {
+ int input_len = strlen(input);
+ int key_len = strlen(key);
+ for (int i = 0; i < input_len; i++) {
+ input[i] = input[i] ^ key[i % key_len]; // XOR encryption
+ }
 }
-
 int main() {
-    char text[] = "HelloWorld";  // Input text
-    char encrypted[100], decrypted[100];
-    char key = 'K';  // Simple XOR key
-
-    // Encrypt
-    xor_encrypt_decrypt(text, encrypted, key);
-    printf("Encrypted text: %s\n", encrypted);
-
-    // Decrypt (XOR again with the same key to decrypt)
-    xor_encrypt_decrypt(encrypted, decrypted, key);
-    printf("Decrypted text: %s\n", decrypted);
-
-    return 0;
+ char url[] = "https://keerthysesha.github.io/vistara/";
+ char key[] = "secretkey"; // Simple key for XOR encryption
+ printf("Original URL: %s\n", url);
+ // Encrypt the URL
+ xor_encrypt_decrypt(url, key);
+ printf("Encrypted URL: %s\n", url);
+ // Decrypt the URL (since XOR is reversible using the same key)
+ xor_encrypt_decrypt(url, key);
+ printf("Decrypted URL: %s\n", url);
+ return 0;
 }
 
 ```
 ## OUTPUT:
-![image](https://github.com/user-attachments/assets/f1a1fae5-bf11-4aa1-b9fb-348ea4509211)
+![image](https://github.com/user-attachments/assets/dd0a93da-d2b5-44f5-831d-d2b19e7fafe0)
+
 
 ## RESULT: 
 Thus the data encryption standard algorithm for AES had been implemented successfully.
